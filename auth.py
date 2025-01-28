@@ -1,34 +1,22 @@
 import paramiko
 
-def connexion(host, utilisateur, mdp):
-    client = paramiko.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(host, username=utilisateur, password=mdp)
-    return client
-
-
-
-# execute la commande d'installation du service
-def sudo_command_service(client_ssh, service_name, sudo_password):
-    command = f"echo {sudo_password} | sudo -S apt install -y {service_name}"
-    stdin, stdout, stderr = client_ssh.exec_command(command)
-    stdout = stdout.readlines()
-    errors = stderr.read().decode()
-
-    if errors:
-        print(f"Erreur lors de l'installation de {service_name} : {errors}")
-    else:
-        print(f"{service_name} installé avec succès.")
-    return stdout
-
-
-
-def sudo_command_user(client_ssh, username, password, sudo_password):
-    command = (f"sudo -S useradd -m {username} -p {password}")
-
-    stdin, stdout, stderr = client_ssh.exec_command(command ,get_pty=True)
-    stdin.write(sudo_password + '\n')
-    stdin.flush()
-    stdout = stdout.readlines()
-    errors = stderr.read().decode()
-    return stdout, errors
+def connexion(host, user, pwd):
+    try:
+        # Création de l'objet SSHClient
+        client_ssh = paramiko.SSHClient()
+        client_ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        
+        # Tentative de connexion
+        client_ssh.connect(hostname=host, username=user, password=pwd)
+        
+        print(f"Connexion réussie à {host}")
+        return client_ssh
+    except paramiko.AuthenticationException:
+        print("Échec de l'authentification. Vérifiez votre utilisateur/mot de passe.")
+        return None
+    except paramiko.SSHException as ssh_error:
+        print(f"Erreur SSH : {ssh_error}")
+        return None
+    except Exception as e:
+        print(f"Erreur générale : {e}")
+        return None
