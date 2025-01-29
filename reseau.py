@@ -34,3 +34,4 @@ def change_dns(host, user, pwd, sudo_password):
             print(f"DNS modifié avec succès.")
     except Exception as e:
         print(f"Erreur lors du changement de DNS : {e}")
+
