@@ -36,13 +36,19 @@ def main():
                     create_password = getpass.getpass("Mot de passe : ")
                     sudo_password = getpass.getpass("Mot de passe sudo : ")
                     create_users(host, user, pwd, sudo_password, create_user, create_password)
+
                 elif user_choice == "2":
                     print("Supprimer un utilisateur")
                     delete_user = input("Nom d'utilisateur : ")
                     sudo_password = getpass.getpass("Mot de passe sudo : ")
                     delete_users(client_ssh, delete_user, sudo_password)
+
                 elif user_choice == "3":
                     print("Mettre à jour un utilisateur")
+                    update_user = input("Nom d'utilisateur : ")
+                    sudo_password = getpass.getpass("Mot de passe sudo : ")
+                    update_users(client_ssh, update_user, sudo_password)
+
                 elif user_choice == "4":
                     break
                 else:
@@ -54,6 +60,23 @@ def main():
                 service_choice = menu.services_menu()
                 if service_choice == "1":
                     print("Installer un service ")
+                    sudo_password = getpass.getpass("Mot de passe sudo : ")
+                    service_setup_ftp(host, user, pwd, sudo_password)
+                    service_setup_ldap(host, user, pwd, sudo_password)
+                    service_setup_nginx(host, user, pwd, sudo_password)
+
+                elif service_choice == "2":
+                    print("Arrêter un service")
+                    sudo_password = getpass.getpass("Mot de passe sudo : ")
+                    service_name = input("Nom du service : ")
+                    stop_service(client_ssh, service_name, sudo_password)
+
+                elif service_choice == "3":
+                    print("Redémarrer un service")
+                    sudo_password = getpass.getpass("Mot de passe sudo : ")
+                    service_name = input("Nom du service : ")
+                    restart_service(client_ssh, service_name, sudo_password)
+
                 elif service_choice == "4":
                     break
                 else:
@@ -64,11 +87,15 @@ def main():
             while True:
                 network_choice = menu.network_menu()
                 if network_choice == "1":
-                    print("Changer DNS (placeholder)")
-                elif network_choice == "2":
-                    print("Changer Gateway (placeholder)")
-                elif network_choice == "3":
                     print("Changer IP (placeholder)")
+                    sudo_password = getpass.getpass("Mot de passe sudo : ")
+                    change_ip(host, user, pwd, sudo_password)
+                elif network_choice == "2":
+                    print("Changer DNS (placeholder)")
+                    sudo_password = getpass.getpass("Mot de passe sudo : ")
+                    change_dns(host, user, pwd, sudo_password)
+                elif network_choice == "3":
+                    print("Changer Gateway (placeholder)")
                 elif network_choice == "4":
                     break
                 else:

@@ -39,7 +39,7 @@ class Menu :
 
     def services_menu(self):
         print("Services Menu")
-        print("1. Start Service")
+        print("1. Install Service")
         print("2. Stop Service")
         print("3. Restart Service")
         print("4. Back")
