@@ -2,7 +2,6 @@
 import getpass
 from services import *
 from users import *
-from reseau import *
 from menu import Menu, ClientFromSSH
 from auth import connexion
 from fichier import *
@@ -101,12 +100,8 @@ def main():
                 network_choice = menu.network_menu()
                 if network_choice == "1":
                     print("Changer IP (placeholder)")
-                    sudo_password = getpass.getpass("Mot de passe sudo : ")
-                    change_ip(host, user, pwd, sudo_password)
                 elif network_choice == "2":
                     print("Changer DNS (placeholder)")
-                    sudo_password = getpass.getpass("Mot de passe sudo : ")
-                    change_dns(host, user, pwd, sudo_password)
                 elif network_choice == "3":
                     print("Changer Gateway (placeholder)")
                 elif network_choice == "4":
