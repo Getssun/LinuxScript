@@ -21,36 +21,50 @@ class Menu :
 
     def main_menu(self):
         print("Main Menu")
-        print("1. Users Menu")
-        print("2. Services Menu")
-        print("3. Network Menu")
-        print("4. Exit")
-        choice = input("Enter your choice: ")
+        print("1. Utilisateurs")
+        print("2. Services")
+        print("3. Réseau")
+        print("4. Fichiers")
+        print("5. Quitter")
+        choice = input("Entrez votre choix: ")
         return choice
 
     def users_menu(self):
-        print("Users Menu")
-        print("1. Create User")
-        print("2. Delete User")
-        print("3. Update User")
-        print("4. Back")
-        choice = input("Enter your choice: ")
+        print("Utilisateurs Menu")
+        print("1. Lister les utilisateurs")
+        print("2. Ajouter un utilisateur")
+        print("3. Supprimer un utilisateur")
+        print("4. Mettre à jour un utilisateur")
+        print("5. Retour")
+        choice = input("Entrez votre choix: ")
         return choice
 
     def services_menu(self):
         print("Services Menu")
-        print("1. Install Service")
-        print("2. Stop Service")
-        print("3. Restart Service")
-        print("4. Back")
-        choice = input("Enter your choice: ")
+        print("1. Lister les services")
+        print("2. Installer un service")
+        print("3. Démarrer un service")
+        print("4. Arrêter un service")
+        print("5. Redémarrer un service")
+        print("6. Retour")
+        choice = input("Entrez votre choix: ")
         return choice
 
     def network_menu(self):
-        print("Network Menu")
-        print("1. Change DNS")
-        print("2. Change Gateway")
-        print("3. Change IP")
-        print("4. Back")
-        choice = input("Enter your choice: ")
+        print("Réseau Menu")
+        print("1. Changement d'adresse IP")
+        print("2. Changement DNS") 
+        print("3. Changement de passerelle")
+        print("4. Retour")
+        choice = input("Entrez votre choix: ")
+        return choice
+    
+    def files_menu(self):
+        print("Fichiers Menu")
+        print("1. Lister les fichiers")
+        print("2. Lister les fichiers distants")
+        print("3. Telecharger un fichier")
+        print("4. Envoyer un fichier")
+        print("5. Retour")
+        choice = input("Entrez votre choix: ")
         return choice

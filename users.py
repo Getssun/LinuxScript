@@ -39,3 +39,11 @@ def update_users(client_ssh, username, sudo_password):
     errors = stderr.read().decode()
     print (f"L'utilisateur a été mis à jour {username}")
     return stdout, errors
+
+def list_users(client_ssh):
+    command = "tail -5 /etc/passwd | cut -d: -f1"
+    stdin, stdout, stderr = client_ssh.exec_command(command)
+    stdout = stdout.readlines()
+    errors = stderr.read().decode()
+    print (f"Liste des utilisateurs : {stdout}")
+    return stdout, errors
